@@ -23,3 +23,21 @@ Ecosistema: k8ssandra
 - Medusa - Una utilidad de copia de seguridad creada especialmente para Cassandra
 - Stargate - Servicio que proporciona múltiples APIs, como REST, GraphQL, etc para los datos de Cassandra
 
+## Características de computación en la nube
+
+El escalamiento en el almacenaje sea dinámico, no se tenga que detener la aplicación cuando se necesita incrementar el volumen. Esto lo hicimos mediante Dynamic Volume Provisioning que proporciona k8s.
+Tener un balance de carga para no saturar nodos y atender varios clientes (nginx)
+
+## Características de Cassandra:
+Aprueba de Fallas: Cassandra brinda confianza en que su arquitectura no haya ningún error cuando existan varios nodos conectados en un cluster. Si es que llegase a fallar un nodo, el clúster debería de poder continuar con sus operaciones que estaba realizando.
+Alta Escalabilidad: Debe de soportar una cantidad masiva de nodos y debería de ser posible añadir un nuevo nodo sin la necesidad de detener los procesos realizados por el clúster.
+Alta distribuidad y Alta disponibilidad: La información puede ser repartida en los nodos del cluster y ser accedida por cualquiera de ellos. De tal forma que si llegase a fallar algún nodo, la arquitectura seguirá funcionando.
+Mayor rendimiento: La lectura y escritura de los datos es la más óptima, ya que puede ser usada en tiempo real.
+
+## Arquitectura de Cassandra:
+Cassandra está diseñada de tal forma que no hay una jerarquía de nodos maestros y esclavos.
+Tiene una arquitectura de tipo anillo, es decir las conexiones entre los nodos tiene la forma de un anillo.
+Los datos son distribuidos automáticamente entre los nodos.
+Los datos son almacenados en memoria y escritos en disco.
+Los datos se replican en los nodos para brindar redundancia.
+Los valores hash de las llaves se utilizan para distribuir los datos entre los nodos del clúster.
