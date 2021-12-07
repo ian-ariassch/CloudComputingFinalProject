@@ -6,6 +6,8 @@ Debido a la pandemia, hubo un aumento en la adopción de mascotas debido a que e
 
 Con este aumento, es necesario que las veterinarias necesiten de una base de datos escalable donde puedan ingresar la información de las mascotas ya que cada día las personas están adoptando una nueva mascota.
 
+![pagina](image.png)
+
 ## Aplicaciones
 
 Ecosistema: k8ssandra
