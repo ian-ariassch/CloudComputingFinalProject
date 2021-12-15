@@ -41,3 +41,17 @@ Los datos son distribuidos automáticamente entre los nodos.
 Los datos son almacenados en memoria y escritos en disco.
 Los datos se replican en los nodos para brindar redundancia.
 Los valores hash de las llaves se utilizan para distribuir los datos entre los nodos del clúster.
+
+
+
+## Commandos
+1. `helm install k8ssandra-cluster-a k8ssandra/k8ssandra \
+  -f config-values.yaml` Lanzar K8ssandra
+2. `kubectl wait \
+  --for=condition=Ready cassandradatacenter/dc1 \
+  --timeout=240s` Esperar a que CASSANDRA inicie por completo
+ 3.`kubectl apply -f petclinic.yaml` lanzar app
+ 4. `while [ $(curl localhost:80/petclinic/api/pettypes 2> /dev/null | wc -l) -gt 0 ];
+  do
+    sleep 1
+  done` Esperar que la app se conecte con Casssandra
