@@ -45,7 +45,21 @@ Los valores hash de las llaves se utilizan para distribuir los datos entre los n
 ## Arquitectura del Proyecto:
 ![arqui](arquitecturaProyecto.png)
 
-
+## Monitoreo de la aplicación:
+### Acceso al dashboard de Prometheus:
+![dashboard](monitoreo.jfif)
+### Consultas:
+Prometheus usa el lenguaje de consultas PromQL. Los recursos que nos interesan para monitorear son el CPU y la RAM.
+#### CPU:
+La consulta para obtener el uso de CPU en un cierto rango de tiempo es la siguiente:
+```
+rate(container_cpu_usage_seconds_total{namespace="default"}[1m])
+```
+#### Memoria RAM:
+La consulta para obtener el uso de memoria RAM en un cierto rango de tiempo es la siguiente:
+```
+rate(container_memory_usage_bytes{namespace="default")[1m])
+```
 ## Commandos
 1. `helm install k8ssandra-cluster-a k8ssandra/k8ssandra \
   -f config-values.yaml` Lanzar K8ssandra
