@@ -42,6 +42,8 @@ Los datos son almacenados en memoria y escritos en disco.
 Los datos se replican en los nodos para brindar redundancia.
 Los valores hash de las llaves se utilizan para distribuir los datos entre los nodos del clúster.
 
+## Arquitectura del Proyecto:
+![arqui](arquitecturaProyecto.png)
 
 
 ## Commandos
