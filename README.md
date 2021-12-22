@@ -41,7 +41,9 @@ Los datos son distribuidos automáticamente entre los nodos.
 Los datos son almacenados en memoria y escritos en disco.
 Los datos se replican en los nodos para brindar redundancia.
 Los valores hash de las llaves se utilizan para distribuir los datos entre los nodos del clúster.
+
 ![arqui](data_replication.jpg)
+
 ## Arquitectura del Proyecto:
 ![arqui](arquitecturaProyecto.png)
 
