@@ -51,17 +51,30 @@ Los valores hash de las llaves se utilizan para distribuir los datos entre los n
 ### Acceso al dashboard de Prometheus:
 ![dashboard](monitoreo.jfif)
 ### Consultas:
-Prometheus usa el lenguaje de consultas PromQL. Los recursos que nos interesan para monitorear son el CPU y la RAM.
+Prometheus usa el lenguaje de consultas PromQL. Los recursos que nos interesan para monitorear son el CPU, la RAM y las lecturas de disco.
+Alrededor de las 14:30, se recargaron las páginas de la aplicación múltiples veces para generar estrés. Luego, para las consultas de disco, se volvieron a hacer las recargas alrededor de las 15:20 a 15:25.
 #### CPU:
 La consulta para obtener el uso de CPU en un cierto rango de tiempo es la siguiente:
 ```
-rate(container_cpu_usage_seconds_total{namespace="default"}[1m])
+rate(collectd_cpu_total{namespace="default",cpu="0")[5m])
 ```
+![dashboard](monitoreoCPU.jfif)
 #### Memoria RAM:
 La consulta para obtener el uso de memoria RAM en un cierto rango de tiempo es la siguiente:
 ```
-rate(container_memory_usage_bytes{namespace="default")[1m])
+rate(collectd_memory{namespace="default")[5m])
 ```
+![dashboard](monitoreoMemoria.jfif)
+
+#### Disco Reads:
+La consulta para obtener las lecturas de disco es la siguiente:
+```
+rate(collectd_processes_disk_octets_read_total{namespace="default")[1m])
+```
+![dashboard](monitoreoDisco.jfif)
+
+### Conclusiones del monitoreo
+Como podemos ver, al momento de recargar las páginas se generaron picos en las métricas de CPU, RAM y lecturas de disco. Sin embargo, las lecturas de disco solo se incrementaron la segunda vez que recargamos la página. 
 ## Commandos
 1. `helm install k8ssandra-cluster-a k8ssandra/k8ssandra \
   -f config-values.yaml` Lanzar K8ssandra
