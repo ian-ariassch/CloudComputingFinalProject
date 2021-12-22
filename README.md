@@ -28,8 +28,6 @@ Ecosistema: k8ssandra
 El escalamiento en el almacenaje sea dinámico, no se tenga que detener la aplicación cuando se necesita incrementar el volumen. Esto lo hicimos mediante Dynamic Volume Provisioning que proporciona k8s.
 Tener un balance de carga para no saturar nodos y atender varios clientes (nginx)
 
-![img](data_replication.jpg)
-
 ## Características de Cassandra:
 Aprueba de Fallas: Cassandra brinda confianza en que su arquitectura no haya ningún error cuando existan varios nodos conectados en un cluster. Si es que llegase a fallar un nodo, el clúster debería de poder continuar con sus operaciones que estaba realizando.
 Alta Escalabilidad: Debe de soportar una cantidad masiva de nodos y debería de ser posible añadir un nuevo nodo sin la necesidad de detener los procesos realizados por el clúster.
